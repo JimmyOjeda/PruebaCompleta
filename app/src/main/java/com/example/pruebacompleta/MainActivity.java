@@ -82,17 +82,17 @@ public class MainActivity extends AppCompatActivity
 
         FragmentManager fragmentManager=getSupportFragmentManager();
 
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_agenda) {
             fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment01()).commit();
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_addActivity) {
             fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment02()).commit();
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_historial) {
             fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment03()).commit();
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_ajustes) {
             fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment04()).commit();
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_compartir) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_enviar) {
 
         }
 

@@ -15,6 +15,9 @@
     <string name="compartir">Compartir</string>
     <string name="enviar">Enviar</string>
 
+    <string name="agenda_nombre">Nombre de la actividad</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
