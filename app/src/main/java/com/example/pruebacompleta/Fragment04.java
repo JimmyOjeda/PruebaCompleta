@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+//Clase para mostrar el layout de AJUSTES
 public class Fragment04 extends Fragment {
 
     @Override

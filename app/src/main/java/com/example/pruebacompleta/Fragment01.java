@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+//Clase para mostrar el layout de AGENDA
 public class Fragment01 extends Fragment {
 
     @Override

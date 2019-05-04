@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+//Clase para mostrar el layout de AÑADIR ACTIVIDAD
 public class Fragment02 extends Fragment {
 
     @Override
