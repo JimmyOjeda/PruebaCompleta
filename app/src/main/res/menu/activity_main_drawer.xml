@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/cuaderno"
+            android:title="Agenda" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/anadiractividad"
+            android:title="Añadir actividad" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/historial"
+            android:title="Historial" />
+        <item
+            android:id="@+id/nav_tools"
+            android:icon="@drawable/ajustes"
+            android:title="Ajustes" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Compartir" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Enviar" />
+        </menu>
+    </item>
+
+</menu>
