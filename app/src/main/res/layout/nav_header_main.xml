@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
-    android:background="@drawable/back"
+    android:background="#9FD9F1"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -14,13 +14,12 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="159dp"
-        android:layout_height="92dp"
-        android:background="#5C03A9F4"
+        android:layout_width="185dp"
+        android:layout_height="85dp"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="2dp"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/icon" />
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:layout_width="match_parent"
@@ -28,7 +27,7 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="Go Man"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#FFFFFFFF"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="italic" />
 
@@ -37,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="go.man@goman.com"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="14sp"
         android:textStyle="italic" />
 

@@ -82,7 +82,7 @@
             android:layout_marginStart="20sp"
             android:text="@string/addAct_btn_time"
             android:layout_marginTop="3dp"
-            android:layout_marginBottom="5sp"
+            android:layout_marginBottom="25sp"
             />
 
         <EditText
@@ -103,14 +103,15 @@
             android:layout_marginTop="0dp"
             android:layout_toEndOf="@id/b_time"
             android:clickable="false"
-            android:inputType="date" />
+            android:inputType="date"
+            android:layout_marginBottom = "25sp"/>
 
-        <!---
+
         <TextView
             android:id="@+id/t_notes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/nombre"
+            android:layout_below="@id/et_time"
             android:text="@string/addAct_notes"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -121,10 +122,19 @@
             android:layout_below="@id/t_notes"
             android:hint="@string/addAct_hint_notes"
             android:inputType="textMultiLine"
-            android:lines="4"
-            android:maxLines="4"
-            android:singleLine="false" />
-        -->
+            android:lines="6"
+            android:maxLines="6"
+            android:singleLine="false"
+            android:layout_marginBottom = "30sp"/>
+
+        <Button
+            android:id="@+id/b_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/notes"
+            android:layout_centerInParent="true"
+            android:text="@string/addAct_btn_submit"
+            />
 
     </RelativeLayout>
 </ScrollView>

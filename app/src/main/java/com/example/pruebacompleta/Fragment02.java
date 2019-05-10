@@ -1,6 +1,7 @@
 package com.example.pruebacompleta;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 
 import java.util.Calendar;
 
@@ -17,8 +19,8 @@ public class Fragment02 extends Fragment implements View.OnClickListener {
 
     Button b_date, b_time;
     EditText et_date, et_time;
-    private int day,month,year,hour,minutes;
     private String date;
+    private String time;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,9 +45,9 @@ public class Fragment02 extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if(v==b_date){
             final Calendar c = Calendar.getInstance();
-            day = c.get(Calendar.DAY_OF_MONTH);
-            month = c.get(Calendar.MONTH);
-            year = c.get(Calendar.YEAR);
+           int day = c.get(Calendar.DAY_OF_MONTH);
+           int month = c.get(Calendar.MONTH);
+           int year = c.get(Calendar.YEAR);
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener(){
                 @Override
@@ -53,14 +55,24 @@ public class Fragment02 extends Fragment implements View.OnClickListener {
                     date = String.valueOf(dayOfMonth) + "/" + String.valueOf(month) + "/" + String.valueOf(year);
                     et_date.setText(date);
                 }
-            },day,month,year);
+            },year,month,day);
             datePickerDialog.show();
         }
 
-
         if(v==b_time){
 
+            final Calendar c = Calendar.getInstance();
+           int hour = c.get(Calendar.HOUR_OF_DAY);
+           int minutes = c.get(Calendar.MINUTE);
 
+            TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    time = String.valueOf(hourOfDay) + ":" + String.valueOf(minute);
+                    et_time.setText(time);
+                }
+            },hour,minutes,false);
+            timePickerDialog.show();
         }
     }
 }
