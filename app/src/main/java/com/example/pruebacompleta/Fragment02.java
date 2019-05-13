@@ -2,14 +2,17 @@ package com.example.pruebacompleta;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
@@ -17,6 +20,7 @@ import java.util.Calendar;
 //Clase para mostrar el layout de AÑADIR ACTIVIDAD
 public class Fragment02 extends Fragment implements View.OnClickListener {
 
+    //Variables para DateTimePicker
     Button b_date, b_time;
     EditText et_date, et_time;
     private String date;
@@ -25,22 +29,39 @@ public class Fragment02 extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_fragment02, container, false);
 
-        //Creación del DateTimePicker para elegir fecha y hora para la realizacion de la actividad
-        b_date = (Button)view.findViewById(R.id.b_date);
-        b_time = (Button)view.findViewById(R.id.b_time);
-        et_date = (EditText)view.findViewById(R.id.et_date);
-        et_time = (EditText)view.findViewById(R.id.et_time);
+        //Valores del spinner de prioridad
+        Spinner spinner = (Spinner)view.findViewById(R.id.spinner_priority);
+        String[] datos = new String[]{"Alta", "Media", "Baja"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, datos);
+        spinner.setAdapter(adapter);
 
-        b_date.setOnClickListener(this);
-        b_time.setOnClickListener(this);
+        //Variables del DateTimePicker para elegir fecha y hora para la realizacion de la actividad
+                b_date = (Button)view.findViewById(R.id.b_date);
+                b_time = (Button)view.findViewById(R.id.b_time);
+                et_date = (EditText)view.findViewById(R.id.et_date);
+                et_time = (EditText)view.findViewById(R.id.et_time);
+
+                b_date.setOnClickListener(this);
+                b_time.setOnClickListener(this);
+
+        //Redirigir a MainActivity cuando se oprime "AGREGAR"
+        Button buttonAdd = (Button)view.findViewById(R.id.b_add);
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
-
     }
 
+    //Metodo OnClick para el dateTimePicker
     @Override
     public void onClick(View v) {
         if(v==b_date){
