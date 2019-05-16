@@ -1,5 +1,16 @@
 package com.example.pruebacompleta;
 
+import java.util.*;
+import android.util.Log;
+import java.io.File;
+import java.io.IOException;
+import org.apache.commons.io.FileUtils;
+
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.EditText;
+
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,6 +28,10 @@ import android.view.Menu;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ArrayList<String> items;
+    private ArrayAdapter<String> itemsAdapter;
+    private ListView lvItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +56,15 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
 
+        //LECTURA DE ARCHIVO
+        leerActividades();
+
+        //AGENDACION DE ACTIVIDADES EQUIS DE
+        lvItems = (ListView) findViewById(R.id.lista);
+        //items = new ArrayList<String>();
+        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
+        lvItems.setAdapter(itemsAdapter);
+        setupListViewListener();
     }
 
     @Override
@@ -102,5 +126,62 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void setupListViewListener()
+    {
+        lvItems.setOnItemLongClickListener(
+                new AdapterView.OnItemLongClickListener(){
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> adapter, View item, int pos, long id)
+                    {
+                     items.remove(pos);
+                     itemsAdapter.notifyDataSetChanged();
+                     escribirActividades();
+                     return true;
+                    }
+                }
+        );
+    }
+
+    public void agendarActividad(View v)
+    {
+        EditText etNewItem = (EditText) findViewById(R.id.et_nombre);
+        String itemText = etNewItem.getText().toString();
+        items.add(items.size(),itemText);
+        itemsAdapter.notifyDataSetChanged();
+        etNewItem.setText("");
+        escribirActividades();
+
+        Log.d("NOTIFICACION", "Se ejecuta agendarActividad()");
+    }
+
+    private void leerActividades()
+    {
+        File filesDir = getExternalFilesDir(null);
+        File guardadoFile = new File(filesDir, "meme.txt");
+        try
+        {
+            items = new ArrayList<String>(FileUtils.readLines(guardadoFile));
+        } catch (IOException e) {
+            items = new ArrayList<String>();
+            Log.d("ERROR", "Se intento leer actividades");
+        }
+    }
+
+    private void escribirActividades()
+    {
+        File filesDir = getExternalFilesDir(null);
+        File guardadoFile = new File(filesDir, "meme.txt");
+        try {
+            Log.d("NOTIFICACION", items.toString());
+            FileUtils.writeLines(guardadoFile, items);
+            Log.d("NOTIFICACION", filesDir.toString());
+            Log.d("NOTIFICACION", "===================================");
+            Log.d("NOTIFICACION", items.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.d("ERROR", "Se intento escribir actividades");
+        }
     }
 }
