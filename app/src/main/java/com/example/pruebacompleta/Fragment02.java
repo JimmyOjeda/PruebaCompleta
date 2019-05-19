@@ -56,14 +56,14 @@ public class Fragment02 extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 MainActivity activity = (MainActivity) getActivity();
-                activity.agendarActividad(v); /////////////////////////////////equisde
+                activity.agendarActividad(v);
                 startActivity(intent);
             }
         });
 
         return view;
     }
-
+    
     //Metodo OnClick para el dateTimePicker
     @Override
     public void onClick(View v) {

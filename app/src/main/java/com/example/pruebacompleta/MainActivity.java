@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity
         //LECTURA DE ARCHIVO
         leerActividades();
 
-        //AGENDACION DE ACTIVIDADES EQUIS DE
+        //AGENDACION DE ACTIVIDADES
         lvItems = (ListView) findViewById(R.id.lista);
         //items = new ArrayList<String>();
         itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
@@ -117,10 +117,6 @@ public class MainActivity extends AppCompatActivity
             fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment03()).commit();
         } else if (id == R.id.nav_ajustes) {
             fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment04()).commit();
-        } else if (id == R.id.nav_compartir) {
-
-        } else if (id == R.id.nav_enviar) {
-
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
