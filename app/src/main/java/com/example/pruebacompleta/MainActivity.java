@@ -180,4 +180,4 @@ public class MainActivity extends AppCompatActivity
             Log.d("ERROR", "Se intento escribir actividades");
         }
     }
-}testing
+}
