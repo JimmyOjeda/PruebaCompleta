@@ -19,13 +19,12 @@
     <!-- Fragment02 strings -->
     <string name="addAct_nombre">Nombre de la actividad</string>
     <string name="addAct_notes">Notas</string>
-        <string name="addAct_hint_notes">Pequeña descripción de la actividad</string>
+    <string name="addAct_hint_notes">Pequeña descripción de la actividad</string>
     <string name="addAct_priority">Nivel de prioridad</string>
     <string name="addAct_date">Fecha y hora a realizarse</string>
-        <string name="addAct_btn_date">Fecha</string>
-        <string name="addAct_btn_time">Hora</string>
+    <string name="addAct_btn_date">Fecha</string>
+    <string name="addAct_btn_time">Hora</string>
     <string name="addAct_btn_submit">AGENDAR</string>
-
 
 
     <!-- TODO: Remove or change this placeholder text -->

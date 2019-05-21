@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".addActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/t_nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5sp"
+            android:text="@string/addAct_nombre"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/et_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t_nombre"
+            android:layout_marginBottom="15sp"
+            android:inputType="text"
+            android:singleLine="true">
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_nombre"
+            android:layout_marginStart="5sp"
+            android:layout_marginEnd="15sp"
+            android:layout_marginBottom="18sp"
+            android:text="@string/addAct_priority"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000" />
+
+        <Spinner
+            android:id="@+id/spinner_priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/priority"
+            android:layout_marginBottom="15sp"
+            android:layout_toEndOf="@id/priority"></Spinner>
+
+        <TextView
+            android:id="@+id/t_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/priority"
+            android:layout_marginStart="5sp"
+            android:layout_marginBottom="15sp"
+            android:text="@string/addAct_date"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/b_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t_date"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="4sp"
+            android:layout_marginBottom="5sp"
+            android:text="@string/addAct_btn_date" />
+
+        <Button
+            android:id="@+id/b_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/b_date"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="25sp"
+            android:text="@string/addAct_btn_time" />
+
+        <EditText
+            android:id="@+id/et_date"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/b_date"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@id/b_date"
+            android:clickable="false"
+            android:inputType="date" />
+
+        <EditText
+            android:id="@+id/et_time"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/b_time"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="25sp"
+            android:layout_toEndOf="@id/b_time"
+            android:clickable="false"
+            android:inputType="date" />
+
+
+        <TextView
+            android:id="@+id/t_notes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_time"
+            android:layout_marginStart="5sp"
+            android:text="@string/addAct_notes"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t_notes"
+            android:layout_marginBottom="30sp"
+            android:hint="@string/addAct_hint_notes"
+            android:inputType="textMultiLine"
+            android:lines="6"
+            android:maxLines="6"
+            android:singleLine="false" />
+
+        <Button
+            android:id="@+id/b_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/notes"
+            android:layout_centerInParent="true"
+            android:onClick=""
+            android:text="@string/addAct_btn_submit" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
