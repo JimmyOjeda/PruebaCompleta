@@ -140,6 +140,10 @@ public class MainActivity extends AppCompatActivity
         );
     }
 
+    /**
+     * Metodo para agendar las actividades
+     * @param v View
+     */
     public void agendarActividad(View v)
     {
         EditText etNewItem = (EditText) findViewById(R.id.et_nombre);
@@ -152,6 +156,9 @@ public class MainActivity extends AppCompatActivity
         Log.d("NOTIFICACION", "Se ejecuta agendarActividad()");
     }
 
+    /**
+     * Metodo para leer las actividades en un archivo de texto
+     */
     private void leerActividades()
     {
         File filesDir = getExternalFilesDir(null);
@@ -165,6 +172,9 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Metodo para escribir las actividades en un archivo de texto
+     */
     private void escribirActividades()
     {
         File filesDir = getExternalFilesDir(null);
