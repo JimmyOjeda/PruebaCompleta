@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-//Clase para mostrar el layout de HISTORIAL
+/**
+ * Clase para mostrar el layout de HISTORIAL
+ */
 public class Fragment03 extends Fragment {
 
     @Override
