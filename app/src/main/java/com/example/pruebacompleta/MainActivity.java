@@ -7,7 +7,7 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.SimpleAdapter;
 import android.widget.ListView;
 import android.widget.EditText;
 
@@ -30,7 +30,11 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ArrayList<String> items;
-    private ArrayAdapter<String> itemsAdapter;
+    private ArrayList<String> descs;
+
+    List<Map<String, String>>  listArray = new ArrayList<>();
+
+    private SimpleAdapter itemsAdapter;
     private ListView lvItems;
 
     @Override
@@ -62,8 +66,12 @@ public class MainActivity extends AppCompatActivity
         //AGENDACION DE ACTIVIDADES
         lvItems = (ListView) findViewById(R.id.lista);
         //items = new ArrayList<String>();
-        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
+        itemsAdapter = new SimpleAdapter(this, listArray,
+                           android.R.layout.simple_list_item_2,
+                           new String[] {"titulo", "detalles" },
+                           new int[] {android.R.id.text1, android.R.id.text2 });
         lvItems.setAdapter(itemsAdapter);
+        actualizarLista(true);
         setupListViewListener();
     }
 
@@ -132,7 +140,8 @@ public class MainActivity extends AppCompatActivity
                     public boolean onItemLongClick(AdapterView<?> adapter, View item, int pos, long id)
                     {
                      items.remove(pos);
-                     itemsAdapter.notifyDataSetChanged();
+                     descs.remove(pos);
+                     actualizarLista(true);
                      escribirActividades();
                      return true;
                     }
@@ -147,13 +156,21 @@ public class MainActivity extends AppCompatActivity
     public void agendarActividad(View v)
     {
         EditText etNewItem = (EditText) findViewById(R.id.et_nombre);
+        EditText etNewDate = (EditText) findViewById(R.id.et_date);
+        EditText etNewTime = (EditText) findViewById(R.id.et_time);
         String itemText = etNewItem.getText().toString();
-        items.add(items.size(),itemText);
-        itemsAdapter.notifyDataSetChanged();
+        String dateText = etNewDate.getText().toString();
+        String timeText = etNewTime.getText().toString();
+
+        String act = ""+itemText+"";
+        String desc = ""+dateText+"  |  "+timeText+"";
+
+        items.add(items.size(),act);
+        descs.add(descs.size(),desc);
+        actualizarLista(true);
+
         etNewItem.setText("");
         escribirActividades();
-
-        Log.d("NOTIFICACION", "Se ejecuta agendarActividad()");
     }
 
     /**
@@ -162,12 +179,15 @@ public class MainActivity extends AppCompatActivity
     private void leerActividades()
     {
         File filesDir = getExternalFilesDir(null);
-        File guardadoFile = new File(filesDir, "meme.txt");
+        File guardadoFile1 = new File(filesDir, "actividades.txt");
+        File guardadoFile2 = new File(filesDir, "detalles.txt");
         try
         {
-            items = new ArrayList<String>(FileUtils.readLines(guardadoFile));
+            items = new ArrayList<String>(FileUtils.readLines(guardadoFile1));
+            descs = new ArrayList<String>(FileUtils.readLines(guardadoFile2));
         } catch (IOException e) {
             items = new ArrayList<String>();
+            descs = new ArrayList<String>();
             Log.d("ERROR", "Se intento leer actividades");
         }
     }
@@ -178,16 +198,31 @@ public class MainActivity extends AppCompatActivity
     private void escribirActividades()
     {
         File filesDir = getExternalFilesDir(null);
-        File guardadoFile = new File(filesDir, "meme.txt");
+        File guardadoFile1 = new File(filesDir, "actividades.txt");
+        File guardadoFile2 = new File(filesDir, "detalles.txt");
         try {
-            Log.d("NOTIFICACION", items.toString());
-            FileUtils.writeLines(guardadoFile, items);
-            Log.d("NOTIFICACION", filesDir.toString());
+            FileUtils.writeLines(guardadoFile1, items);
+            FileUtils.writeLines(guardadoFile2, descs);
             Log.d("NOTIFICACION", "===================================");
             Log.d("NOTIFICACION", items.toString());
+            Log.d("NOTIFICACION", descs.toString());
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("ERROR", "Se intento escribir actividades");
         }
+    }
+
+    private void actualizarLista(boolean adaptar)
+    {
+        listArray.clear();
+        for(int i = 0; i < items.size(); i++)
+        {
+            Map<String, String> listItem = new HashMap<>();
+            listItem.put("titulo", items.get(i));
+            listItem.put("detalles", descs.get(i));
+            listArray.add(listItem);
+        }
+        if (adaptar){ itemsAdapter.notifyDataSetChanged(); }
+        Log.d("NOTIFICACION", "Se actualizo la lista");
     }
 }
