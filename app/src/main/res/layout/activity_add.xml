@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.circularreveal.CircularRevealRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/t_nombre"
             android:layout_marginBottom="15sp"
+            android:hint="@string/addAct_nombrehint"
             android:inputType="text"
             android:singleLine="true">
 
@@ -92,6 +93,7 @@
             android:layout_marginTop="0dp"
             android:layout_toEndOf="@id/b_date"
             android:clickable="false"
+            android:hint="@string/addAct_datehint"
             android:inputType="date" />
 
         <EditText
@@ -103,6 +105,7 @@
             android:layout_marginBottom="25sp"
             android:layout_toEndOf="@id/b_time"
             android:clickable="false"
+            android:hint="@string/addAct_timehint"
             android:inputType="date" />
 
 
@@ -133,8 +136,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/notes"
             android:layout_centerInParent="true"
-            android:onClick=""
+            android:onClick="onClickAdd"
             android:text="@string/addAct_btn_submit" />
     </RelativeLayout>
 
-</android.support.constraint.ConstraintLayout>
+</android.support.design.circularreveal.CircularRevealRelativeLayout>

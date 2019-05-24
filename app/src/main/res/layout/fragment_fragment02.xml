@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondomain"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -25,9 +26,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/t_nombre"
+            android:layout_marginBottom="15sp"
+            android:background="#80FFFFFF"
+            android:backgroundTint="#D8FFFFFF"
+            android:hint="@string/addAct_nombrehint"
             android:inputType="text"
-            android:singleLine="true"
-            android:layout_marginBottom="15sp">
+            android:singleLine="true">
+
             <requestFocus />
         </EditText>
 
@@ -49,9 +54,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/priority"
+            android:layout_marginBottom="15sp"
             android:layout_toEndOf="@id/priority"
-            android:layout_marginBottom="15sp">
-        </Spinner>
+            android:background="#80FFFFFF"
+            android:backgroundTint="#D8FFFFFF"></Spinner>
 
         <TextView
             android:id="@+id/t_date"
@@ -95,7 +101,10 @@
             android:layout_alignTop="@id/b_date"
             android:layout_marginTop="0dp"
             android:layout_toEndOf="@id/b_date"
+            android:background="#80FFFFFF"
+            android:backgroundTint="#D8FFFFFF"
             android:clickable="false"
+            android:hint="@string/addAct_datehint"
             android:inputType="date" />
 
         <EditText
@@ -104,10 +113,13 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/b_time"
             android:layout_marginTop="0dp"
+            android:layout_marginBottom="25sp"
             android:layout_toEndOf="@id/b_time"
+            android:background="#80FFFFFF"
+            android:backgroundTint="#D8FFFFFF"
             android:clickable="false"
-            android:inputType="date"
-            android:layout_marginBottom = "25sp"/>
+            android:hint="@string/addAct_timehint"
+            android:inputType="date" />
 
 
         <TextView
@@ -124,12 +136,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/t_notes"
+            android:layout_marginBottom="30sp"
+            android:background="#88FFFFFF"
+            android:backgroundTint="#D8FFFFFF"
             android:hint="@string/addAct_hint_notes"
             android:inputType="textMultiLine"
             android:lines="6"
             android:maxLines="6"
-            android:singleLine="false"
-            android:layout_marginBottom = "30sp"/>
+            android:singleLine="false" />
 
         <Button
             android:id="@+id/b_add"

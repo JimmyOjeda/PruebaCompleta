@@ -1,6 +1,8 @@
 package com.example.pruebacompleta;
 
 import java.util.*;
+
+import android.content.Intent;
 import android.util.Log;
 import java.io.File;
 import java.io.IOException;
@@ -43,14 +45,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -86,13 +80,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -107,6 +94,11 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    public void onClickGoToAdd(View view) {
+        Intent GoToAdd = new Intent(this, addActivity.class);
+        startActivity(GoToAdd);
+    }
+
 
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -118,7 +110,8 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager=getSupportFragmentManager();
 
         if (id == R.id.nav_agenda) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment01()).commit();
+            Intent backToMain = new Intent(this, MainActivity.class);
+            startActivity(backToMain);
         } else if (id == R.id.nav_addActivity) {
             fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment02()).commit();
         } else if (id == R.id.nav_historial) {

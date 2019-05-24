@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">PruebaCompleta</string>
+    <string name="app_name">GoMan</string>
+    <string name="main_tittle">Actividades</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -18,14 +19,29 @@
 
     <!-- Fragment02 strings -->
     <string name="addAct_nombre">Nombre de la actividad</string>
+    <string name="addAct_nombrehint">Escribe el nombre de la actividad</string>
     <string name="addAct_notes">Notas</string>
     <string name="addAct_hint_notes">Pequeña descripción de la actividad</string>
     <string name="addAct_priority">Nivel de prioridad</string>
     <string name="addAct_date">Fecha y hora a realizarse</string>
+    <string name="addAct_datehint">Fecha a realizarse</string>
+    <string name="addAct_timehint">Hora a realizarse</string>
     <string name="addAct_btn_date">Fecha</string>
     <string name="addAct_btn_time">Hora</string>
     <string name="addAct_btn_submit">AGENDAR</string>
 
+    <!-- Fragment03 strings -->
+    <string name="history_tittle">Historial</string>
+    <string name="points_earned">Puntaje total obtenido: </string>
+    <string name="points">Poner aqui el puntaje</string>
+
+    <!-- Fragment whatToDo strings -->
+    <string name="what_to_do">¿Qué deseas hacer con esta actividad?</string>
+    <string name="informative_text">¿Qué deseas hacer con esta actividad? \nSi seleccionas eliminar
+        esta actividad se borrará todo rastro de ella \nSi seleccionas marcar como ralizada se
+        agregará el puntaje de la actividad a tus puntos obtenidos</string>
+    <string name="btnaccept">Aceptar</string>
+    <string name="btncancel">Cancelar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
