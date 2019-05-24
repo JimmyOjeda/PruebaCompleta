@@ -18,15 +18,24 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-//Clase para mostrar el layout de AÑADIR ACTIVIDAD
+/**
+ * Clase para mostrar el layout de AÑADIR ACTIVIDAD
+ */
 public class Fragment02 extends Fragment implements View.OnClickListener {
 
-    //Variables para DateTimePicker
+    //Variables globales para DateTimePicker
     Button b_date, b_time;
     EditText et_date, et_time;
     private String date;
     private String time;
 
+    /**Método onCreate
+     *
+     * @param inflater Construye los views
+     * @param container Inserta el fragment
+     * @param savedInstanceState Provee información sobre el estado anterior del fragment
+     * @return view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,6 +61,10 @@ public class Fragment02 extends Fragment implements View.OnClickListener {
         //Redirigir a MainActivity cuando se oprime "AGREGAR"
         Button buttonAdd = (Button)view.findViewById(R.id.b_add);
         buttonAdd.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Metodo OnClick para redigirir a MainActivity y agendar actividad
+             * @param v View
+             */
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MainActivity.class);
@@ -63,8 +76,11 @@ public class Fragment02 extends Fragment implements View.OnClickListener {
 
         return view;
     }
-    
-    //Metodo OnClick para el dateTimePicker
+
+    /**Metodo OnClick para el dateTimePicker
+     *
+     * @param v View
+     */
     @Override
     public void onClick(View v) {
         if(v==b_date){
@@ -74,6 +90,13 @@ public class Fragment02 extends Fragment implements View.OnClickListener {
            int year = c.get(Calendar.YEAR);
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener(){
+                /**
+                 * Método para insertar la fecha en el EditText
+                 * @param view View
+                 * @param year Variable entera año
+                 * @param month Varaiable entera mes
+                 * @param dayOfMonth Variable entera dia
+                 */
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                     date = String.valueOf(dayOfMonth) + "/" + String.valueOf(month) + "/" + String.valueOf(year);
@@ -90,6 +113,12 @@ public class Fragment02 extends Fragment implements View.OnClickListener {
            int minutes = c.get(Calendar.MINUTE);
 
             TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                /**
+                 * Metodo para insertar la hora en el EditText
+                 * @param view View
+                 * @param hourOfDay Variable entera hora
+                 * @param minute Variable entera minuto
+                 */
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     time = String.valueOf(hourOfDay) + ":" + String.valueOf(minute);
