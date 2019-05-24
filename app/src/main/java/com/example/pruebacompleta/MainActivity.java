@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onClickGoToAdd(View view) {
-        Intent GoToAdd = new Intent(this, addActivity.class);
+        Intent GoToAdd = new Intent(this,addActivity.class);
         startActivity(GoToAdd);
     }
 

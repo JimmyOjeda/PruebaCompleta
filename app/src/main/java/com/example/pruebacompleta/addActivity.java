@@ -14,7 +14,9 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
-
+/**
+ * Clase para mostrar el layout de AÑADIR ACTIVIDAD
+ */
 public class addActivity extends AppCompatActivity implements View.OnClickListener {
 
     //Variables para DateTimePicker
@@ -23,6 +25,10 @@ public class addActivity extends AppCompatActivity implements View.OnClickListen
     private String date;
     private String time;
 
+    /**
+     * Metodo OnCreate
+     * @param savedInstanceState Informacion sobre el estado anterior del activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +46,6 @@ public class addActivity extends AppCompatActivity implements View.OnClickListen
         //Redirigir a MainActivity cuando se oprime "AGREGAR"
         /*Button buttonAdd = (Button)findViewById(R.id.b_add);
         buttonAdd.setOnClickListener(new View.OnClickListener() {
-
         });*/
 
         //Valores del spinner de prioridad
@@ -50,13 +55,20 @@ public class addActivity extends AppCompatActivity implements View.OnClickListen
         spinner.setAdapter(adapter);
     }
 
+    /**
+     *Metodo para redireccionar a MainActivity
+     * @param v view
+     */
     public void onClickAdd(View v) {
         Intent backToMain = new Intent(this, MainActivity.class);
         startActivity(backToMain);
     }
 
 
-    //Metodo OnClick para el dateTimePicker
+    /**
+     *  Metodo OnClick para el dateTimePicker
+     * @param v view
+     */
     @Override
     public void onClick(View v) {
         if (v == b_date) {
@@ -67,13 +79,20 @@ public class addActivity extends AppCompatActivity implements View.OnClickListen
 
             DatePickerDialog datePickerDialog;
             datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                /**
+                 * Ingresar la fecha en el edit text
+                 * @param view view
+                 * @param year int del año
+                 * @param month int del mes
+                 * @param dayOfMonth int del dia
+                 */
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                     et_date.setText(dayOfMonth + "/" + month + "/" + year);
 
                 }
             }
-                    , day, month, year);
+            , day, month, year);
             datePickerDialog.show();
         }
 
@@ -84,6 +103,12 @@ public class addActivity extends AppCompatActivity implements View.OnClickListen
             int minutes = c.get(Calendar.MINUTE);
 
             TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+                /**
+                 * Ingresar la hora en el EditText
+                 * @param view view
+                 * @param hourOfDay int de la hora
+                 * @param minute int de los minutos
+                 */
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     et_time.setText(hourOfDay + ":" + minute);

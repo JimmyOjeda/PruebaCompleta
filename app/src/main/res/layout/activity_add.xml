@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EAF6FE"
     tools:context=".addActivity">
 
     <RelativeLayout
@@ -51,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/priority"
             android:layout_marginBottom="15sp"
-            android:layout_toEndOf="@id/priority"></Spinner>
+            android:layout_toEndOf="@id/priority"> </Spinner>
 
         <TextView
             android:id="@+id/t_date"
@@ -108,33 +109,11 @@
             android:hint="@string/addAct_timehint"
             android:inputType="date" />
 
-
-        <TextView
-            android:id="@+id/t_notes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/et_time"
-            android:layout_marginStart="5sp"
-            android:text="@string/addAct_notes"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <EditText
-            android:id="@+id/notes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/t_notes"
-            android:layout_marginBottom="30sp"
-            android:hint="@string/addAct_hint_notes"
-            android:inputType="textMultiLine"
-            android:lines="6"
-            android:maxLines="6"
-            android:singleLine="false" />
-
         <Button
             android:id="@+id/b_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/notes"
+            android:layout_below="@id/et_time"
             android:layout_centerInParent="true"
             android:onClick="onClickAdd"
             android:text="@string/addAct_btn_submit" />

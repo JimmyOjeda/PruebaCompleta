@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondomain"
+    android:background="#EAF6FE"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -28,7 +28,7 @@
             android:layout_below="@id/t_nombre"
             android:layout_marginBottom="15sp"
             android:background="#80FFFFFF"
-            android:backgroundTint="#D8FFFFFF"
+            android:backgroundTint="#FFFFFF"
             android:hint="@string/addAct_nombrehint"
             android:inputType="text"
             android:singleLine="true">
@@ -55,9 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/priority"
             android:layout_marginBottom="15sp"
-            android:layout_toEndOf="@id/priority"
-            android:background="#80FFFFFF"
-            android:backgroundTint="#D8FFFFFF"></Spinner>
+            android:layout_toEndOf="@id/priority"> </Spinner>
 
         <TextView
             android:id="@+id/t_date"
@@ -122,34 +120,11 @@
             android:inputType="date" />
 
 
-        <TextView
-            android:id="@+id/t_notes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/et_time"
-            android:text="@string/addAct_notes"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_marginStart="5sp"/>
-
-        <EditText
-            android:id="@+id/notes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/t_notes"
-            android:layout_marginBottom="30sp"
-            android:background="#88FFFFFF"
-            android:backgroundTint="#D8FFFFFF"
-            android:hint="@string/addAct_hint_notes"
-            android:inputType="textMultiLine"
-            android:lines="6"
-            android:maxLines="6"
-            android:singleLine="false" />
-
         <Button
             android:id="@+id/b_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/notes"
+            android:layout_below="@id/et_time"
             android:layout_centerInParent="true"
             android:text="@string/addAct_btn_submit"
             android:onClick="agendarActividad"
