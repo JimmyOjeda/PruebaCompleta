@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity
     private boolean listDebounce = false;
     public float puntaje = 0;
 
+    TextView mensajeProgreso;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -194,10 +196,25 @@ public class MainActivity extends AppCompatActivity
      */
     public void cargarHistorial()
     {
+
         if (itemsH.size() != 0)
         {
             float puntaje1 = itemsH.size()-itemsIncomp.size();
             puntaje = (puntaje1/itemsH.size())*100;
+        }
+
+        mensajeProgreso= (TextView) findViewById(R.id.feedback);
+        if (puntaje==100){
+            mensajeProgreso.setText("¡Lo estás haciendo excelente!, sigue así.");
+        }else if (puntaje >= 75 && puntaje<100){
+            mensajeProgreso.setText("¡Vas bien pero puedes mejorar aún más!.");
+        }else if (puntaje >= 50 && puntaje<75){
+            mensajeProgreso.setText("Vaya... Has descuidado un poco tus actividades.");
+        }else if (puntaje >= 25 && puntaje<50){
+            mensajeProgreso.setText("¡Lo estás haciendo mal!, te dejo un tip: No dejes para mañana " +
+                    "lo que pudes hacer hoy.");
+        }else if (puntaje >= 0 && puntaje<25){
+            mensajeProgreso.setText("Parece que no has hecho caso a ninguno de mis avisos...");
         }
 
         Log.d("CALC", "CALCULO TOTAL:"+itemsH.size());
