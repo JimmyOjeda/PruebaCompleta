@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 
 /**
@@ -28,6 +30,12 @@ public class whatToDo extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    public void onStart() {
+
+        super.onStart();
+        ((MainActivity)getActivity()).cargarDatos();
+    }
 
     public whatToDo() {
         // Required empty public constructor
@@ -58,13 +66,72 @@ public class whatToDo extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_what_to_do, container, false);
+        View view = inflater.inflate(R.layout.fragment_what_to_do, container, false);
+
+
+        /**
+         *Metodo para redireccionar a MainActivity eliminando una actividad.
+         * @param v view
+         */
+        Button buttonDeleto = (Button)view.findViewById(R.id.buttonDel);
+        buttonDeleto.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Metodo OnClick para redigirir a MainActivity y agendar actividad
+             * @param v View
+             */
+            @Override
+            public void onClick(View v) {
+                MainActivity activity = (MainActivity) getActivity();
+                activity.eliminarActividad();
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+
+        /**
+         *Metodo para redireccionar a MainActivity terminando una actividad
+         * @param v view
+         */
+        Button buttonDone = (Button)view.findViewById(R.id.buttonDon);
+        buttonDone.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Metodo OnClick para redigirir a MainActivity y agendar actividad
+             * @param v View
+             */
+            @Override
+            public void onClick(View v) {
+                MainActivity activity = (MainActivity) getActivity();
+                activity.terminarActividad();
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+
+        /**
+         *Metodo para redireccionar a MainActivity marcando una actividad como incompleta.
+         * @param v view
+         */
+        Button buttonGtfo = (Button)view.findViewById(R.id.buttonNot);
+        buttonGtfo.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Metodo OnClick para redigirir a MainActivity y agendar actividad
+             * @param v View
+             */
+            @Override
+            public void onClick(View v) {
+                MainActivity activity = (MainActivity) getActivity();
+                activity.actividadIncompleta();
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

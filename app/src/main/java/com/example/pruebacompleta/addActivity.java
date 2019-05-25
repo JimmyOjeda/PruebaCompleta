@@ -17,7 +17,7 @@ import java.util.Calendar;
 /**
  * Clase para mostrar el layout de AÑADIR ACTIVIDAD
  */
-public class addActivity extends AppCompatActivity implements View.OnClickListener {
+public class addActivity extends MainActivity implements View.OnClickListener {
 
     //Variables para DateTimePicker
     Button b_date, b_time;
@@ -61,7 +61,10 @@ public class addActivity extends AppCompatActivity implements View.OnClickListen
      */
     public void onClickAdd(View v) {
         Intent backToMain = new Intent(this, MainActivity.class);
+        backToMain.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        agendarActividad(v);
         startActivity(backToMain);
+        finish();
     }
 
 

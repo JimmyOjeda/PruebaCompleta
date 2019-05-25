@@ -4,32 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EAF6FE"
+    android:background="@color/design_default_color_primary_dark"
     tools:context=".addActivity">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="150dp"
+        android:background="@color/colorNull"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/t_nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5sp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="120dp"
             android:text="@string/addAct_nombre"
+            android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#000000" />
+            android:textColor="@color/colorTextWhite"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et_nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/t_nombre"
+            android:layout_marginLeft="15sp"
+            android:layout_marginRight="15sp"
             android:layout_marginBottom="15sp"
+            android:backgroundTint="@color/colorSecondary"
+            android:backgroundTintMode="src_in"
             android:hint="@string/addAct_nombrehint"
             android:inputType="text"
-            android:singleLine="true">
+            android:singleLine="true"
+            android:textColor="@color/colorOrange"
+            android:textColorHint="@color/design_default_color_primary"
+            android:textStyle="italic">
 
             <requestFocus />
         </EditText>
@@ -39,12 +53,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/et_nombre"
-            android:layout_marginStart="5sp"
+            android:layout_marginStart="15sp"
             android:layout_marginEnd="15sp"
             android:layout_marginBottom="18sp"
             android:text="@string/addAct_priority"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#000000" />
+            android:textColor="@color/colorTextWhite"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/t_date2"
+            android:layout_width="48dp"
+            android:layout_height="24dp"
+            android:layout_alignTop="@+id/spinner_priority"
+            android:layout_alignEnd="@+id/spinner_priority"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="15sp"
+            android:layout_toEndOf="@+id/priority"
+            android:background="@color/colorSecondaryComplement"
+            android:text="@string/addAct_date"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorNull"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spinner_priority"
@@ -52,18 +84,24 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/priority"
             android:layout_marginBottom="15sp"
-            android:layout_toEndOf="@id/priority"> </Spinner>
+            android:layout_toEndOf="@id/priority"
+            android:backgroundTint="@color/colorOrange"
+            android:backgroundTintMode="src_in"
+            android:contextClickable="false"
+            android:popupBackground="@color/colorSecondaryComplement"
+            android:spinnerMode="dialog"></Spinner>
 
         <TextView
             android:id="@+id/t_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/priority"
-            android:layout_marginStart="5sp"
+            android:layout_marginStart="15sp"
             android:layout_marginBottom="15sp"
             android:text="@string/addAct_date"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#000000" />
+            android:textColor="@color/colorTextWhite"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/b_date"
@@ -74,7 +112,10 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="4sp"
             android:layout_marginBottom="5sp"
-            android:text="@string/addAct_btn_date" />
+            android:backgroundTint="@color/colorSecondary"
+            android:text="@string/addAct_btn_date"
+            android:textColor="@color/colorTextWhite"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/b_time"
@@ -84,7 +125,10 @@
             android:layout_marginStart="20sp"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="25sp"
-            android:text="@string/addAct_btn_time" />
+            android:backgroundTint="@color/colorSecondary"
+            android:text="@string/addAct_btn_time"
+            android:textColor="@color/colorTextWhite"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et_date"
@@ -93,9 +137,14 @@
             android:layout_alignTop="@id/b_date"
             android:layout_marginTop="0dp"
             android:layout_toEndOf="@id/b_date"
+            android:backgroundTint="@color/colorSecondary"
             android:clickable="false"
             android:hint="@string/addAct_datehint"
-            android:inputType="date" />
+            android:inputType="date"
+            android:textColor="@color/colorOrange"
+            android:textColorHint="@color/design_default_color_primary"
+            android:textColorLink="@color/colorOrange"
+            android:textStyle="italic" />
 
         <EditText
             android:id="@+id/et_time"
@@ -105,18 +154,27 @@
             android:layout_marginTop="0dp"
             android:layout_marginBottom="25sp"
             android:layout_toEndOf="@id/b_time"
+            android:backgroundTint="@color/colorSecondary"
             android:clickable="false"
             android:hint="@string/addAct_timehint"
-            android:inputType="date" />
+            android:inputType="date"
+            android:textColor="@color/colorOrange"
+            android:textColorHint="@color/design_default_color_primary"
+            android:textColorLink="@color/colorOrange"
+            android:textStyle="italic" />
 
         <Button
             android:id="@+id/b_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="152dp"
+            android:layout_height="72dp"
             android:layout_below="@id/et_time"
             android:layout_centerInParent="true"
+            android:backgroundTint="@color/colorGreen"
             android:onClick="onClickAdd"
-            android:text="@string/addAct_btn_submit" />
+            android:text="@string/addAct_btn_submit"
+            android:textColor="@color/colorTextWhite"
+            android:textSize="24sp" />
+
     </RelativeLayout>
 
 </android.support.design.circularreveal.CircularRevealRelativeLayout>

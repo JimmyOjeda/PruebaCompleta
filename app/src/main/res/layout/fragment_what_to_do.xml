@@ -7,9 +7,14 @@
     tools:context=".whatToDo">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#4D000000">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@color/design_default_color_primary_dark">
 
         <TextView
             android:id="@+id/textView4"
@@ -17,12 +22,29 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="60dp"
-            android:background="#1E7563"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="98dp"
+            android:background="@color/colorOrange"
             android:text="@string/what_to_do"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
+            android:textDirection="locale"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/deleteName"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="23dp"
+            android:background="@color/colorSecondary"
+            android:text="actividad"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textDirection="locale"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -32,11 +54,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView4"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="31dp"
             android:layout_marginTop="0dp"
-            android:background="#A39A9A"
+            android:background="@color/colorSecondary"
             android:text="@string/informative_text"
-            android:textColor="#FFFFFF" />
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="italic" />
 
         <RadioGroup
             android:layout_width="150dp"
@@ -44,15 +69,7 @@
             android:layout_below="@+id/textView6"
             android:layout_alignParentStart="true"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="0dp">
-
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="RadioButton" />
-        </RadioGroup>
+            android:layout_marginTop="0dp" />
 
         <RadioGroup
             android:layout_width="150dp"
@@ -60,35 +77,44 @@
             android:layout_below="@+id/textView6"
             android:layout_alignParentStart="true"
             android:layout_marginStart="210dp"
-            android:layout_marginTop="0dp">
-
-            <RadioButton
-                android:id="@+id/radioButton4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="RadioButton" />
-        </RadioGroup>
+            android:layout_marginTop="0dp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonDon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView6"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="270dp"
-            android:layout_marginTop="100dp"
-            android:text="@string/btnaccept" />
+            android:layout_marginStart="236dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/colorGreen"
+            android:text="@string/btnaccept"
+            android:textColor="@color/colorTextWhite" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonNot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView6"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="100dp"
-            android:text="@string/btncancel" />
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="9dp"
+            android:backgroundTint="@color/colorYellow"
+            android:text="@string/btngtfo"
+            android:textColor="@color/colorTextWhite" />
+
+        <Button
+            android:id="@+id/buttonDel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView6"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="141dp"
+            android:layout_marginTop="72dp"
+            android:backgroundTint="@color/colorRed"
+            android:backgroundTintMode="src_in"
+            android:text="@string/btncancel"
+            android:textColor="@color/colorTextWhite" />
     </RelativeLayout>
 
 </FrameLayout>

@@ -3,6 +3,7 @@ package com.example.pruebacompleta;
 import java.util.*;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import java.io.File;
 import java.io.IOException;
@@ -14,8 +15,6 @@ import android.widget.ListView;
 import android.widget.EditText;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -26,18 +25,33 @@ import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+
+        whatToDo.OnFragmentInteractionListener {
 
     private ArrayList<String> items;
     private ArrayList<String> descs;
 
+    private ArrayList<String> itemsH;
+    private ArrayList<String> descsH;
+
+    private ArrayList<String> itemsIncomp;
+
     List<Map<String, String>>  listArray = new ArrayList<>();
+    List<Map<String, String>>  historyArray = new ArrayList<>();
 
     private SimpleAdapter itemsAdapter;
+    private SimpleAdapter historyAdapter;
     private ListView lvItems;
+    private ListView lvHistory;
+
+    private int oldPos;
+    private boolean listDebounce = false;
+    public float puntaje = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +73,14 @@ public class MainActivity extends AppCompatActivity
 
         //AGENDACION DE ACTIVIDADES
         lvItems = (ListView) findViewById(R.id.lista);
-        //items = new ArrayList<String>();
+
         itemsAdapter = new SimpleAdapter(this, listArray,
-                           android.R.layout.simple_list_item_2,
-                           new String[] {"titulo", "detalles" },
-                           new int[] {android.R.id.text1, android.R.id.text2 });
+                android.R.layout.simple_list_item_2,
+                new String[] {"titulo", "detalles" },
+                new int[] {android.R.id.text1, android.R.id.text2 });
+
         lvItems.setAdapter(itemsAdapter);
+
         actualizarLista(true);
         setupListViewListener();
     }
@@ -72,6 +88,21 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer == null)
+        {
+            Intent backToMain = new Intent(this, MainActivity.class);
+            backToMain.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(backToMain);
+            finish();
+            return;
+        }
+
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            listDebounce = false;
+        }
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -97,6 +128,7 @@ public class MainActivity extends AppCompatActivity
     public void onClickGoToAdd(View view) {
         Intent GoToAdd = new Intent(this,addActivity.class);
         startActivity(GoToAdd);
+        finish();
     }
 
 
@@ -111,13 +143,17 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_agenda) {
             Intent backToMain = new Intent(this, MainActivity.class);
+            //backToMain.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(backToMain);
+            finish();
         } else if (id == R.id.nav_addActivity) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment02()).commit();
+            Intent GoToAdd = new Intent(this,addActivity.class);
+            startActivity(GoToAdd);
+            finish();
         } else if (id == R.id.nav_historial) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment03()).commit();
+            fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment03()).addToBackStack("tag").commit();
         } else if (id == R.id.nav_ajustes) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment04()).commit();
+            fragmentManager.beginTransaction().replace(R.id.contenedor, new Fragment04()).addToBackStack("tag").commit();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -132,14 +168,91 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapter, View item, int pos, long id)
                     {
-                     items.remove(pos);
-                     descs.remove(pos);
-                     actualizarLista(true);
-                     escribirActividades();
-                     return true;
+                        if (listDebounce) return false;
+                        listDebounce = true;
+                        oldPos = pos;
+                        FragmentManager fragmentManager=getSupportFragmentManager();
+                        fragmentManager.beginTransaction().replace(R.id.contenedor, new whatToDo()).addToBackStack("tag").commit();
+                        return true;
                     }
                 }
         );
+    }
+
+    public void cargarDatos()
+    {
+        TextView deleteAct = (TextView) findViewById(R.id.deleteName);
+        deleteAct.setText(items.get(oldPos)+" | "+descs.get(oldPos));
+    }
+
+    public void cargarHistorial()
+    {
+        if (itemsH.size() != 0)
+        {
+            float puntaje1 = itemsH.size()-itemsIncomp.size();
+            puntaje = (puntaje1/itemsH.size())*100;
+        }
+
+        Log.d("CALC", "CALCULO TOTAL:"+itemsH.size());
+        Log.d("CALC", "CALCULO SOLO INCOMPLETAS:"+itemsIncomp.size());
+        Log.d("CALC", "CALCULO SOLO REALIZADAS:"+(itemsH.size()-itemsIncomp.size()));
+        Log.d("CALC", "CALCULO PROMEDIO:"+puntaje);
+
+
+        TextView points = findViewById(R.id.points);
+        points.setText(""+Math.round(puntaje)+" / 100");
+
+        lvHistory = (ListView) findViewById(R.id.historial);
+
+        historyAdapter = new SimpleAdapter(this, historyArray,
+                android.R.layout.simple_list_item_2,
+                new String[] {"titulo", "detalles" },
+                new int[] {android.R.id.text1, android.R.id.text2 });
+
+        lvHistory.setAdapter(historyAdapter);
+
+        actualizarHistorial();
+    }
+
+    /**
+     * Metodo para eliminar las actividades
+     */
+    public void eliminarActividad()
+    {
+        listDebounce = false;
+        items.remove(oldPos);
+        descs.remove(oldPos);
+        actualizarLista(true);
+        escribirActividades();
+    }
+
+    /**
+     * Metodo para marcar la actividad como incompleta
+     */
+    public void actividadIncompleta()
+    {
+        listDebounce = false;
+        itemsH.add(itemsH.size(),items.get(oldPos) +" [INCOMPLETA]");
+        descsH.add(descsH.size(),descs.get(oldPos));
+        itemsIncomp.add(itemsIncomp.size(), items.get(oldPos)+" > "+descs.get(oldPos));
+        items.remove(oldPos);
+        descs.remove(oldPos);
+        actualizarLista(true);
+        escribirActividades();
+    }
+
+    /**
+     * Metodo para terminar las actividades
+     */
+    public void terminarActividad()
+    {
+        listDebounce = false;
+        itemsH.add(itemsH.size(),items.get(oldPos));
+        descsH.add(descsH.size(),descs.get(oldPos));
+        items.remove(oldPos);
+        descs.remove(oldPos);
+        actualizarLista(true);
+        escribirActividades();
     }
 
     /**
@@ -174,13 +287,24 @@ public class MainActivity extends AppCompatActivity
         File filesDir = getExternalFilesDir(null);
         File guardadoFile1 = new File(filesDir, "actividades.txt");
         File guardadoFile2 = new File(filesDir, "detalles.txt");
+        File guardadoFile3 = new File(filesDir, "historial.txt");
+        File guardadoFile4 = new File(filesDir, "historialDetalles.txt");
+
+        File guardadoFile5 = new File(filesDir, "historialIncompletos.txt");
         try
         {
             items = new ArrayList<String>(FileUtils.readLines(guardadoFile1));
             descs = new ArrayList<String>(FileUtils.readLines(guardadoFile2));
+            itemsH = new ArrayList<String>(FileUtils.readLines(guardadoFile3));
+            descsH = new ArrayList<String>(FileUtils.readLines(guardadoFile4));
+
+            itemsIncomp = new ArrayList<String>(FileUtils.readLines(guardadoFile5));
         } catch (IOException e) {
             items = new ArrayList<String>();
             descs = new ArrayList<String>();
+            itemsH = new ArrayList<String>();
+            descsH = new ArrayList<String>();
+            itemsIncomp = new ArrayList<String>();
             Log.d("ERROR", "Se intento leer actividades");
         }
     }
@@ -193,9 +317,16 @@ public class MainActivity extends AppCompatActivity
         File filesDir = getExternalFilesDir(null);
         File guardadoFile1 = new File(filesDir, "actividades.txt");
         File guardadoFile2 = new File(filesDir, "detalles.txt");
+        File guardadoFile3 = new File(filesDir, "historial.txt");
+        File guardadoFile4 = new File(filesDir, "historialDetalles.txt");
+
+        File guardadoFile5 = new File(filesDir, "historialIncompletos.txt");
         try {
             FileUtils.writeLines(guardadoFile1, items);
             FileUtils.writeLines(guardadoFile2, descs);
+            FileUtils.writeLines(guardadoFile3, itemsH);
+            FileUtils.writeLines(guardadoFile4, descsH);
+            FileUtils.writeLines(guardadoFile5, itemsIncomp);
             Log.d("NOTIFICACION", "===================================");
             Log.d("NOTIFICACION", items.toString());
             Log.d("NOTIFICACION", descs.toString());
@@ -217,5 +348,26 @@ public class MainActivity extends AppCompatActivity
         }
         if (adaptar){ itemsAdapter.notifyDataSetChanged(); }
         Log.d("NOTIFICACION", "Se actualizo la lista");
+    }
+
+    private void actualizarHistorial()
+    {
+        historyArray.clear();
+        for(int i = 0; i < itemsH.size(); i++)
+        {
+            Map<String, String> listHistory = new HashMap<>();
+
+            listHistory.put("titulo", itemsH.get(i));
+            listHistory.put("detalles", descsH.get(i));
+
+            historyArray.add(listHistory);
+        }
+        historyAdapter.notifyDataSetChanged();
+        Log.d("NOTIFICACION", "Se actualizo la lista");
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
