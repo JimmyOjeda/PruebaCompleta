@@ -110,5 +110,19 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/points"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="72dp"
+            android:maxLines="4"
+            android:background="@color/colorSecondaryComplement"
+            android:textColor="@color/colorTextWhite"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 </FrameLayout>
