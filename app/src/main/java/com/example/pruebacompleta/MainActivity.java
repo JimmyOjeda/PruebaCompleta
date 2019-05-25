@@ -26,6 +26,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
@@ -288,12 +289,14 @@ public class MainActivity extends AppCompatActivity
         EditText etNewItem = (EditText) findViewById(R.id.et_nombre);
         EditText etNewDate = (EditText) findViewById(R.id.et_date);
         EditText etNewTime = (EditText) findViewById(R.id.et_time);
+        Spinner spNewPriority = (Spinner) findViewById(R.id.spinner_priority);
         String itemText = etNewItem.getText().toString();
         String dateText = etNewDate.getText().toString();
         String timeText = etNewTime.getText().toString();
+        String spinnerText = spNewPriority.getSelectedItem().toString();
 
         String act = ""+itemText+"";
-        String desc = ""+dateText+"  |  "+timeText+"";
+        String desc = ""+dateText+"  |  "+timeText+"  |  "+spinnerText+"";
 
         items.add(items.size(),act);
         descs.add(descs.size(),desc);

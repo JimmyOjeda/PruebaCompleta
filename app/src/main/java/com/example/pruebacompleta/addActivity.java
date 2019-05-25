@@ -95,7 +95,7 @@ public class addActivity extends MainActivity implements View.OnClickListener {
 
                 }
             }
-            , day, month, year);
+            , year, month, day);
             datePickerDialog.show();
         }
 
