@@ -179,12 +179,19 @@ public class MainActivity extends AppCompatActivity
         );
     }
 
+
+    /**
+     * Metodo para mostrar un string al fragment de eliminar actividad
+     */
     public void cargarDatos()
     {
-        TextView deleteAct = (TextView) findViewById(R.id.deleteName);
+        TextView deleteAct = (TextView)findViewById(R.id.deleteName);
         deleteAct.setText(items.get(oldPos)+" | "+descs.get(oldPos));
     }
 
+    /**
+     * Metodo para cargar el historial y asignar puntaje
+     */
     public void cargarHistorial()
     {
         if (itemsH.size() != 0)
@@ -336,6 +343,10 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Metodo para actualizar la lista de actividades
+     * @param adaptar boolean variable
+     */
     private void actualizarLista(boolean adaptar)
     {
         listArray.clear();
@@ -350,6 +361,9 @@ public class MainActivity extends AppCompatActivity
         Log.d("NOTIFICACION", "Se actualizo la lista");
     }
 
+    /**
+     * Metodo para actualizar la lista del historial
+     */
     private void actualizarHistorial()
     {
         historyArray.clear();

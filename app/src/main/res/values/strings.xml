@@ -12,33 +12,33 @@
     <string name="consejo1">El puntaje se calcula con el total de actividades realizadas entre el total de actividades.</string>
 
     <!-- sidebar strings -->
-    <string name="agenda">agenda</string>
-    <string name="addActivity">añadir actividad</string>
-    <string name="historial">historial</string>
-    <string name="ajustes">ajustes</string>
-    <string name="compartir">compartir</string>
-    <string name="enviar">enviar</string>
+    <string name="agenda">Agenda</string>
+    <string name="addActivity">Añadir actividad</string>
+    <string name="historial">Historial</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="compartir">Compartir</string>
+    <string name="enviar">Enviar</string>
 
     <!-- addActivity strings -->
     <string name="addAct_nombre">AÑADIR ACTIVIDAD</string>
-    <string name="addAct_nombrehint">escriba el nombre de la actividad</string>
+    <string name="addAct_nombrehint">Escriba el nombre de la actividad</string>
     <string name="addAct_priority">NIVEL DE IMPORTANCIA</string>
     <string name="addAct_date">FECHA Y HORA</string>
-    <string name="addAct_datehint">fecha a realizarse</string>
-    <string name="addAct_timehint">hora a realizarse</string>
+    <string name="addAct_datehint">Fecha a realizarse</string>
+    <string name="addAct_timehint">Hora a realizarse</string>
     <string name="addAct_btn_date">FECHA</string>
     <string name="addAct_btn_time">HORA</string>
     <string name="addAct_btn_submit">AGENDAR</string>
 
     <!-- Fragment03 strings -->
-    <string name="history_tittle">historial</string>
-    <string name="points_earned">puntaje total: </string>
+    <string name="history_tittle">Historial</string>
+    <string name="points_earned">Puntaje Total: </string>
     <string name="points">Poner aqui el puntaje</string>
-    <string name="history_tittle2">actividades realizadas</string>
+    <string name="history_tittle2">Actividades realizadas</string>
 
     <!-- Fragment whatToDo strings -->
-    <string name="what_to_do">¿qué desea hacer?</string>
-    <string name="informative_text">seleccione ELIMINAR si solo quiere eliminar la actividad.\nseleccione REALIZADA si se ha terminado la actividad completamente.\nseleccione INCOMPLETA si no termino la actividad correctamente.</string>
+    <string name="what_to_do">¿Qué desea hacer?</string>
+    <string name="informative_text">Seleccione ELIMINAR si solo quiere eliminar la actividad.\nSeleccione REALIZADA si se ha terminado la actividad completamente.\nSeleccione INCOMPLETA si no termino la actividad correctamente.</string>
     <string name="btnaccept">REALIZADA</string>
     <string name="btngtfo">INCOMPLETA</string>
     <string name="btncancel">ELIMINAR</string>
