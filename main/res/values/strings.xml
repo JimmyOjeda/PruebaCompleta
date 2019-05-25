@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">GoMan</string>
+    <string name="main_tittle">actividades</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">ajustes</string>
+    <string name="nav_header_communicate">Communicate</string>
+
+    <!-- sidebar strings -->
+    <string name="agenda">agenda</string>
+    <string name="addActivity">añadir actividad</string>
+    <string name="historial">historial</string>
+    <string name="ajustes">ajustes</string>
+    <string name="compartir">compartir</string>
+    <string name="enviar">enviar</string>
+
+    <!-- addActivity strings -->
+    <string name="addAct_nombre">AÑADIR ACTIVIDAD</string>
+    <string name="addAct_nombrehint">escriba el nombre de la actividad</string>
+    <string name="addAct_priority">NIVEL DE IMPORTANCIA</string>
+    <string name="addAct_date">FECHA Y HORA</string>
+    <string name="addAct_datehint">fecha a realizarse</string>
+    <string name="addAct_timehint">hora a realizarse</string>
+    <string name="addAct_btn_date">FECHA</string>
+    <string name="addAct_btn_time">HORA</string>
+    <string name="addAct_btn_submit">AGENDAR</string>
+
+    <!-- Fragment03 strings -->
+    <string name="history_tittle">historial</string>
+    <string name="points_earned">puntaje total: </string>
+    <string name="points">Poner aqui el puntaje</string>
+    <string name="history_tittle2">actividades realizadas</string>
+
+    <!-- Fragment whatToDo strings -->
+    <string name="what_to_do">¿qué desea hacer?</string>
+    <string name="informative_text">seleccione ELIMINAR si solo quiere eliminar la actividad.\nseleccione REALIZADA si se ha terminado la actividad completamente.</string>
+    <string name="btnaccept">REALIZADA</string>
+    <string name="btncancel">ELIMINAR</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
