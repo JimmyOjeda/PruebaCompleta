@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity
     private int oldPos;
     private boolean listDebounce = false;
     public float puntaje = 0;
+    private int dia, mes, year, hora, minutos;
 
     TextView mensajeProgreso;
 
@@ -236,6 +237,20 @@ public class MainActivity extends AppCompatActivity
 
         lvHistory.setAdapter(historyAdapter);
 
+        //Eliminar el historial despues de 7 dias (Cada domingo)
+        Calendar c = Calendar.getInstance();
+        c.set(year,mes,dia);
+        c.set(Calendar.HOUR_OF_DAY, hora);
+        c.set(Calendar.MINUTE, minutos);
+
+        dia = c.get(Calendar.DAY_OF_WEEK);
+        hora = c.get(Calendar.HOUR_OF_DAY);
+        minutos = c.get(Calendar.MINUTE);
+
+        if((dia == Calendar.SUNDAY)&&(hora==23)&&(minutos==59)){
+            eliminarHistorial();
+        }
+
         actualizarHistorial();
     }
 
@@ -279,6 +294,7 @@ public class MainActivity extends AppCompatActivity
         actualizarLista(true);
         escribirActividades();
     }
+
                 
      /**
      * Metodo para eliminar el historial
@@ -415,6 +431,7 @@ public class MainActivity extends AppCompatActivity
         }
         historyAdapter.notifyDataSetChanged();
         Log.d("NOTIFICACION", "Se actualizo la lista");
+
     }
 
     @Override
