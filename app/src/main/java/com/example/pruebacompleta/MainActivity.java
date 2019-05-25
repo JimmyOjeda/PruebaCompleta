@@ -279,6 +279,23 @@ public class MainActivity extends AppCompatActivity
         actualizarLista(true);
         escribirActividades();
     }
+                
+     /**
+     * Metodo para eliminar el historial
+     */
+    public void eliminarHistorial()
+    {
+        File filesDir = getExternalFilesDir(null);
+        File guardadoFile3 = new File(filesDir, "historial.txt");
+        File guardadoFile4 = new File(filesDir, "historialDetalles.txt");
+        File guardadoFile5 = new File(filesDir, "historialIncompletos.txt");
+
+        guardadoFile3.delete();
+        guardadoFile4.delete();
+        guardadoFile5.delete();
+            
+        actualizarHistorial();
+    }
 
     /**
      * Metodo para agendar las actividades
