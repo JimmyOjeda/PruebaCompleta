@@ -9,6 +9,8 @@
     <string name="action_settings">ajustes</string>
     <string name="nav_header_communicate">Communicate</string>
 
+    <string name="consejo1">El puntaje se calcula con el total de actividades realizadas entre el total de actividades.</string>
+
     <!-- sidebar strings -->
     <string name="agenda">agenda</string>
     <string name="addActivity">añadir actividad</string>
@@ -36,8 +38,9 @@
 
     <!-- Fragment whatToDo strings -->
     <string name="what_to_do">¿qué desea hacer?</string>
-    <string name="informative_text">seleccione ELIMINAR si solo quiere eliminar la actividad.\nseleccione REALIZADA si se ha terminado la actividad completamente.</string>
+    <string name="informative_text">seleccione ELIMINAR si solo quiere eliminar la actividad.\nseleccione REALIZADA si se ha terminado la actividad completamente.\nseleccione INCOMPLETA si no termino la actividad correctamente.</string>
     <string name="btnaccept">REALIZADA</string>
+    <string name="btngtfo">INCOMPLETA</string>
     <string name="btncancel">ELIMINAR</string>
 
     <!-- TODO: Remove or change this placeholder text -->

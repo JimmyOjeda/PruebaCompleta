@@ -95,7 +95,7 @@ public class whatToDo extends Fragment {
         });
 
         /**
-         *Metodo para redireccionar a MainActivity
+         *Metodo para redireccionar a MainActivity terminando una actividad
          * @param v view
          */
         Button buttonDone = (Button)view.findViewById(R.id.buttonDon);
@@ -108,6 +108,24 @@ public class whatToDo extends Fragment {
             public void onClick(View v) {
                 MainActivity activity = (MainActivity) getActivity();
                 activity.terminarActividad();
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+
+        /**
+         *Metodo para redireccionar a MainActivity marcando una actividad como incompleta.
+         * @param v view
+         */
+        Button buttonGtfo = (Button)view.findViewById(R.id.buttonNot);
+        buttonGtfo.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Metodo OnClick para redigirir a MainActivity y agendar actividad
+             * @param v View
+             */
+            @Override
+            public void onClick(View v) {
+                MainActivity activity = (MainActivity) getActivity();
+                activity.actividadIncompleta();
                 getActivity().getSupportFragmentManager().popBackStack();
             }
         });
